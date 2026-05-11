@@ -1,0 +1,65 @@
+aid: proxmox
+name: Proxmox VE
+description: >-
+  Proxmox Virtual Environment (Proxmox VE) is an open-source server
+  virtualization platform that combines KVM hypervisor and LXC containers,
+  software-defined storage and networking, and clustering and high-
+  availability features in a single web-managed solution. The Proxmox VE API
+  exposes all platform operations under /api2/json on port 8006, including
+  node, cluster, storage, pool, and access management endpoints. Supported
+  authentication methods include stateless API tokens (PVEAPIToken header)
+  and ticket-based sessions issued via /access/ticket.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Virtualization
+  - KVM
+  - Containers
+  - LXC
+  - Clustering
+  - Open Source
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/proxmox/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: proxmox:ve-api
+    name: Proxmox VE API
+    description: >-
+      REST-style management API for Proxmox VE covering nodes, virtual
+      machines, containers, storage, networking, clustering, pools, and
+      access management. Authenticated via API tokens (PVEAPIToken header)
+      or ticket-based sessions with CSRFPreventionToken for write operations.
+    humanURL: https://pve.proxmox.com/wiki/Proxmox_VE_API
+    baseURL: https://your.server:8006/api2/json
+    tags:
+      - Virtualization
+      - Cluster Management
+      - Infrastructure
+    properties:
+      - type: Documentation
+        url: https://pve.proxmox.com/wiki/Proxmox_VE_API
+      - type: API Viewer
+        url: https://pve.proxmox.com/pve-docs/api-viewer/
+      - type: Authentication
+        url: https://pve.proxmox.com/wiki/Proxmox_VE_API#Authentication
+
+common:
+  - type: Website
+    url: https://www.proxmox.com
+  - type: Documentation
+    url: https://pve.proxmox.com/pve-docs/
+  - type: Pricing
+    url: https://www.proxmox.com/en/proxmox-virtual-environment/pricing
+  - type: Download
+    url: https://www.proxmox.com/en/downloads
+  - type: API Viewer
+    url: https://pve.proxmox.com/pve-docs/api-viewer/
+  - type: GitHub
+    url: https://github.com/proxmox
+  - type: Community Forum
+    url: https://forum.proxmox.com
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
