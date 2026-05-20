@@ -46,6 +46,8 @@ apis:
         url: https://pve.proxmox.com/wiki/Proxmox_VE_API#Authentication
 
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/proxmox
   - type: Website
     url: https://www.proxmox.com
   - type: Documentation
