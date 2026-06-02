@@ -1,0 +1,8 @@
+---
+title: Upgrade from 3.x to 4.0
+url: https://pve.proxmox.com/mediawiki/index.php?title=Upgrade_from_3.x_to_4.0&diff=12581&oldid=11282
+date: '2026-05-22'
+author: L.Leahu-Vladucu
+feed_url: https://pve.proxmox.com/mediawiki/index.php?title=Special:RecentChanges&feed=atom
+---
+Update links to contain information regarding archive CDNs ← Older revision Revision as of 10:09, 22 May 2026 Line 78: Line 78: ==== Remove Proxmox VE 3.x packages in order to avoid dependency errors ==== ==== Remove Proxmox VE 3.x packages in order to avoid dependency errors ==== Old releases must use [https://forum.proxmox.com/threads/new-archive-cdn-for-end-of-life-eol-releases.178957/ the archive CDN for Proxmox] and [https://www.debian.org/distrib/archive for Debian], so make sure that all repositories in <code>/etc/apt/sources.list</code> and <code>/etc/apt/sources.list.d/*.list</code> use: * <code>archive.debian.org</code> instead of <code>*.debian.org</code> * <code>archive.proxmox.com</code> instead of <code>*.proxmox.com</code> * In case certificate errors occur while running <code>apt-get update</code>, use HTTP instead of HTTPS for the repositories. First make sure that your actual installation is "clean", tentatively run First make sure that your actual installation is "clean", tentatively run Line 106: Line 111: Add repository proxmox jessie location Add repository proxmox jessie location deb https :// enterprise .proxmox.com/debian jessie pve-enterprise deb http :// archive .proxmox.com/debian /pve jessie pve-enterprise deb http:// download .proxmox.com/debian jessie pve-no-subscription deb http:// archive .proxmox.com/debian /pve jessie pve-no-subscription apt-get update apt-get update
