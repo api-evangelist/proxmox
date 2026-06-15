@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Proxmox VE API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}:8006/api2/json/version"
+          },
+          "docs": "Return the current API version of the Proxmox VE node."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Access",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create authentication ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}:8006/api2/json/access/ticket",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "username",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                },
+                {
+                  "name": "realm",
+                  "value": ""
+                },
+                {
+                  "name": "otp",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create a ticket (and CSRFPreventionToken) using username/password credentials.\nThe returned ticket is used as the PVEAuthCookie for subsequent requests, and\nthe CSRFPreventionToken header is required for write operations.\n"
+        },
+        {
+          "info": {
+            "name": "List configured users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}:8006/api2/json/access/users"
+          },
+          "docs": "List configured users"
+        },
+        {
+          "info": {
+            "name": "Create a new user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}:8006/api2/json/access/users"
+          },
+          "docs": "Create a new user"
+        },
+        {
+          "info": {
+            "name": "Delete user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{server}:8006/api2/json/access/users/:userid",
+            "params": [
+              {
+                "name": "userid",
+                "value": "",
+                "type": "path",
+                "description": "User identifier in `USER@REALM` form."
+              }
+            ]
+          },
+          "docs": "Delete user"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Nodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get node status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}:8006/api2/json/nodes/:node/status",
+            "params": [
+              {
+                "name": "node",
+                "value": "",
+                "type": "path",
+                "description": "Name of the Proxmox VE node (cluster member)."
+              }
+            ]
+          },
+          "docs": "Return runtime status of the named Proxmox node."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Containers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create LXC container",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}:8006/api2/json/nodes/:node/lxc",
+            "params": [
+              {
+                "name": "node",
+                "value": "",
+                "type": "path",
+                "description": "Name of the Proxmox VE node (cluster member)."
+              }
+            ]
+          },
+          "docs": "Create LXC container"
+        },
+        {
+          "info": {
+            "name": "Start LXC container",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}:8006/api2/json/nodes/:node/lxc/:vmid/status/start",
+            "params": [
+              {
+                "name": "node",
+                "value": "",
+                "type": "path",
+                "description": "Name of the Proxmox VE node (cluster member)."
+              },
+              {
+                "name": "vmid",
+                "value": "",
+                "type": "path",
+                "description": "Numeric VM/container identifier."
+              }
+            ]
+          },
+          "docs": "Start LXC container"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
