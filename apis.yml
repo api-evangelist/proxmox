@@ -10,7 +10,7 @@ description: >-
   authentication methods include stateless API tokens (PVEAPIToken header)
   and ticket-based sessions issued via /access/ticket.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Virtualization
   - KVM
