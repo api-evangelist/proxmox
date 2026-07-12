@@ -46,6 +46,12 @@ apis:
         url: https://pve.proxmox.com/wiki/Proxmox_VE_API#Authentication
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/proxmox-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/proxmox-domain-security.yml
+  - type: Authentication
+    url: authentication/proxmox-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/proxmox
   - type: Website

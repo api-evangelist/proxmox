@@ -1,0 +1,30 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/proxmox-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - cookie
+  - header
+schemes:
+- name: apiTokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: |-
+    Stateless API token. Send header
+    `Authorization: PVEAPIToken=USER@REALM!TOKENID=UUID`.
+    No CSRFPreventionToken required.
+  sources:
+  - openapi/proxmox-openapi.yml
+- name: ticketAuth
+  type: apiKey
+  in: cookie
+  parameter: PVEAuthCookie
+  description: |-
+    Ticket issued by POST /access/ticket. Carried as a cookie. Write
+    operations also require the `CSRFPreventionToken` header returned with
+    the ticket. Tickets expire after 2 hours.
+  sources:
+  - openapi/proxmox-openapi.yml
