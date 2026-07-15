@@ -46,6 +46,8 @@ apis:
         url: https://pve.proxmox.com/wiki/Proxmox_VE_API#Authentication
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/proxmox-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/proxmox-vulnerability-disclosure.yml
   - type: DomainSecurity
