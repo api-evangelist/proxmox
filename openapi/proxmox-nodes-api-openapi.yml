@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: Proxmox VE Access Nodes API
+  description: 'REST-style management API for Proxmox Virtual Environment (PVE). All endpoints live
+
+    under /api2/json on port 8006 of a PVE node. Authentication is via stateless API
+
+    tokens (PVEAPIToken header) or ticket-based sessions issued by /access/ticket
+
+    (cookie + CSRFPreventionToken header for write operations). Output format may be
+
+    switched via the path (json, extjs, html, text). Tickets expire after 2 hours.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Proxmox VE API
+    url: https://pve.proxmox.com/wiki/Proxmox_VE_API
+servers:
+- url: https://{server}:8006/api2/json
+  description: Proxmox VE node API
+  variables:
+    server:
+      default: your.server
+      description: Hostname or IP of the Proxmox VE node
+security:
+- apiTokenAuth: []
+- ticketAuth: []
+tags:
+- name: Nodes
+paths:
+  /nodes/{node}/status:
+    parameters:
+    - $ref: '#/components/parameters/Node'
+    get:
+      tags:
+      - Nodes
+      summary: Get node status
+      description: Return runtime status of the named Proxmox node.
+      responses:
+        '200':
+          description: Node status
+components:
+  parameters:
+    Node:
+      name: node
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Name of the Proxmox VE node (cluster member).
+  securitySchemes:
+    apiTokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Stateless API token. Send header
+
+        `Authorization: PVEAPIToken=USER@REALM!TOKENID=UUID`.
+
+        No CSRFPreventionToken required.
+
+        '
+    ticketAuth:
+      type: apiKey
+      in: cookie
+      name: PVEAuthCookie
+      description: 'Ticket issued by POST /access/ticket. Carried as a cookie. Write
+
+        operations also require the `CSRFPreventionToken` header returned with
+
+        the ticket. Tickets expire after 2 hours.
+
+        '

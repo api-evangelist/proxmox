@@ -1,0 +1,89 @@
+openapi: 3.1.0
+info:
+  title: Proxmox VE Access Containers API
+  description: 'REST-style management API for Proxmox Virtual Environment (PVE). All endpoints live
+
+    under /api2/json on port 8006 of a PVE node. Authentication is via stateless API
+
+    tokens (PVEAPIToken header) or ticket-based sessions issued by /access/ticket
+
+    (cookie + CSRFPreventionToken header for write operations). Output format may be
+
+    switched via the path (json, extjs, html, text). Tickets expire after 2 hours.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Proxmox VE API
+    url: https://pve.proxmox.com/wiki/Proxmox_VE_API
+servers:
+- url: https://{server}:8006/api2/json
+  description: Proxmox VE node API
+  variables:
+    server:
+      default: your.server
+      description: Hostname or IP of the Proxmox VE node
+security:
+- apiTokenAuth: []
+- ticketAuth: []
+tags:
+- name: Containers
+paths:
+  /nodes/{node}/lxc:
+    parameters:
+    - $ref: '#/components/parameters/Node'
+    post:
+      tags:
+      - Containers
+      summary: Create LXC container
+      responses:
+        '200':
+          description: Container creation task identifier
+  /nodes/{node}/lxc/{vmid}/status/start:
+    parameters:
+    - $ref: '#/components/parameters/Node'
+    - name: vmid
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: Numeric VM/container identifier.
+    post:
+      tags:
+      - Containers
+      summary: Start LXC container
+      responses:
+        '200':
+          description: Start task identifier
+components:
+  parameters:
+    Node:
+      name: node
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Name of the Proxmox VE node (cluster member).
+  securitySchemes:
+    apiTokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Stateless API token. Send header
+
+        `Authorization: PVEAPIToken=USER@REALM!TOKENID=UUID`.
+
+        No CSRFPreventionToken required.
+
+        '
+    ticketAuth:
+      type: apiKey
+      in: cookie
+      name: PVEAuthCookie
+      description: 'Ticket issued by POST /access/ticket. Carried as a cookie. Write
+
+        operations also require the `CSRFPreventionToken` header returned with
+
+        the ticket. Tickets expire after 2 hours.
+
+        '
