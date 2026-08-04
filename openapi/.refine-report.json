@@ -1,0 +1,20 @@
+{
+  "provider": "proxmox",
+  "sources": [
+    "proxmox-access-api-openapi.yml",
+    "proxmox-cluster-api-openapi.yml",
+    "proxmox-containers-api-openapi.yml",
+    "proxmox-nodes-api-openapi.yml"
+  ],
+  "outputs": [
+    "proxmox-access-api-openapi.yml",
+    "proxmox-cluster-api-openapi.yml",
+    "proxmox-containers-api-openapi.yml",
+    "proxmox-nodes-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
