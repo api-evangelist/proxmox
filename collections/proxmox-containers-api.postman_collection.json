@@ -1,0 +1,272 @@
+{
+  "item": [
+    {
+      "id": "94e77be8-25a6-4d96-a9f1-a8bd7243c7b8",
+      "name": "Containers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "85eff481-65be-42b4-b543-d8b8ae8792bc",
+          "name": "Create LXC container",
+          "request": {
+            "name": "Create LXC container",
+            "description": {},
+            "url": {
+              "path": [
+                "nodes",
+                ":node",
+                "lxc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "node",
+                  "description": "(Required) Name of the Proxmox VE node (cluster member)."
+                },
+                {
+                  "description": "Hostname or IP of the Proxmox VE node",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e30b78d-ff69-4150-b8e6-e11c4433079c",
+              "name": "Container creation task identifier",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nodes",
+                    ":node",
+                    "lxc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node",
+                      "description": "(Required) Name of the Proxmox VE node (cluster member)."
+                    },
+                    {
+                      "description": "Hostname or IP of the Proxmox VE node",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b19b5c9-2587-487e-b86f-f65cc7eda250",
+          "name": "Start LXC container",
+          "request": {
+            "name": "Start LXC container",
+            "description": {},
+            "url": {
+              "path": [
+                "nodes",
+                ":node",
+                "lxc",
+                ":vmid",
+                "status",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "node",
+                  "description": "(Required) Name of the Proxmox VE node (cluster member)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "vmid",
+                  "description": "(Required) Numeric VM/container identifier."
+                },
+                {
+                  "description": "Hostname or IP of the Proxmox VE node",
+                  "type": "any",
+                  "value": "{{server}}",
+                  "key": "server"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "42820750-730c-4ece-a636-f6eefbdda456",
+              "name": "Start task identifier",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nodes",
+                    ":node",
+                    "lxc",
+                    ":vmid",
+                    "status",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "node",
+                      "description": "(Required) Name of the Proxmox VE node (cluster member)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "vmid",
+                      "description": "(Required) Numeric VM/container identifier."
+                    },
+                    {
+                      "description": "Hostname or IP of the Proxmox VE node",
+                      "type": "any",
+                      "value": "{{server}}",
+                      "key": "server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP of the Proxmox VE node",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your.server",
+      "key": "server"
+    },
+    {
+      "type": "string",
+      "value": "https://{{server}}:8006/api2/json",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a72419c-06e9-4cb8-8df8-2908f12b6840",
+    "name": "Proxmox VE Access Containers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST-style management API for Proxmox Virtual Environment (PVE). All endpoints live\nunder /api2/json on port 8006 of a PVE node. Authentication is via stateless API\ntokens (PVEAPIToken header) or ticket-based sessions issued by /access/ticket\n(cookie + CSRFPreventionToken header for write operations). Output format may be\nswitched via the path (json, extjs, html, text). Tickets expire after 2 hours.\n\n\nContact Support:\n Name: Proxmox VE API",
+      "type": "text/plain"
+    }
+  }
+}
