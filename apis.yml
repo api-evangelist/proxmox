@@ -29,6 +29,13 @@ tags:
   - Containers
   - LXC
   - Clustering
+  - Open-Source
+tags_raw:
+  - Virtualization
+  - KVM
+  - Containers
+  - LXC
+  - Clustering
   - Open Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/proxmox/refs/heads/main/apis.yml
