@@ -111,6 +111,8 @@ apis:
   humanURL: https://pve.proxmox.com/wiki/Proxmox_VE_API
   baseURL: https://your.server:8006/api2/json
   tags:
+  - Node
+  tags_raw:
   - Nodes
   properties:
   - type: OpenAPI
