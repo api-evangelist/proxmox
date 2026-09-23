@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Proxmox VE Access Containers API
+  title: Proxmox VE Containers API
   description: 'REST-style management API for Proxmox Virtual Environment (PVE). All endpoints live
 
     under /api2/json on port 8006 of a PVE node. Authentication is via stateless API
@@ -9,9 +9,7 @@ info:
 
     (cookie + CSRFPreventionToken header for write operations). Output format may be
 
-    switched via the path (json, extjs, html, text). Tickets expire after 2 hours.
-
-    '
+    switched via the path (json, extjs, html, text). Tickets expire after 2 hours.'
   version: 1.0.0
   contact:
     name: Proxmox VE API
@@ -39,6 +37,8 @@ paths:
       responses:
         '200':
           description: Container creation task identifier
+      operationId: postNodesByNodeLxc
+      x-operation-id-source: derived
   /nodes/{node}/lxc/{vmid}/status/start:
     parameters:
     - $ref: '#/components/parameters/Node'
@@ -55,6 +55,8 @@ paths:
       responses:
         '200':
           description: Start task identifier
+      operationId: postNodesByNodeLxcByVmidStatusStart
+      x-operation-id-source: derived
 components:
   parameters:
     Node:

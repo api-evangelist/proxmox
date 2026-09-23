@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Proxmox VE Access Nodes API
+  title: Proxmox VE Nodes API
   description: 'REST-style management API for Proxmox Virtual Environment (PVE). All endpoints live
 
     under /api2/json on port 8006 of a PVE node. Authentication is via stateless API
@@ -9,9 +9,7 @@ info:
 
     (cookie + CSRFPreventionToken header for write operations). Output format may be
 
-    switched via the path (json, extjs, html, text). Tickets expire after 2 hours.
-
-    '
+    switched via the path (json, extjs, html, text). Tickets expire after 2 hours.'
   version: 1.0.0
   contact:
     name: Proxmox VE API
@@ -40,6 +38,8 @@ paths:
       responses:
         '200':
           description: Node status
+      operationId: getNodesByNodeStatus
+      x-operation-id-source: derived
 components:
   parameters:
     Node:
