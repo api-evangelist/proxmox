@@ -119,6 +119,9 @@ apis:
   - type: OpenAPI
     url: openapi/proxmox-nodes-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/proxmox-capability-edges.yml
+    name: Proxmox VE Business Capability Map
   - type: AgenticAccess
     url: agentic-access/proxmox-agentic-access.yml
   - type: VulnerabilityDisclosure

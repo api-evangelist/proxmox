@@ -1,0 +1,36 @@
+slug: proxmox
+provider: Proxmox VE
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Access
+  spec_file: proxmox-access-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: POST /access/ticket 'Create authentication ticket'; GET /access/users 'List configured users';
+    POST /access/users 'Create a new user'
+  reason: User account administration and authentication ticket issuance for the virtualization platform
+    is Identity & Access Management.
+- tag: Containers
+  spec_file: proxmox-containers-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: POST /nodes/{node}/lxc postNodesByNodeLxc Create LXC container; POST /nodes/{node}/lxc/{vmid}/status/start
+    Start LXC container
+  reason: Operations provision and start LXC containers on virtualization hosts — this is compute infrastructure
+    provisioning and operation, i.e. IT Infrastructure Management. No evidence of product-release environment
+    management specifically, so the cross-industry infrastructure capability is the honest fit.
